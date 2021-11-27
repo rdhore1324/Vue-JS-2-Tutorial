@@ -12,14 +12,8 @@
 
 <body>
     <div id="vue-app">
-        <h1>Data Binding</h1>
-        <p>{{ name }}</p>
-        <p>{{ job }}</p>
-        <p>{{ greet('morning') }}</p>
-        <p>{{ greet('night') }}</p>
-        <p><a :href="website">W3 Sources</a></p>
-        <input type="text" :value="name" />
-        <p v-html="websiteTag"></p>
+        <input type="text" v-model="name" />
+        {{ name }}
     </div>
 
     <script src="app.js"></script>
