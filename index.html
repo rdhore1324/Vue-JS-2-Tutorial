@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue"></script>
+    <link rel="stylesheet" href="./styles.css" />
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="vue-app">
+        <h1>Events</h1>
+        <button @click="add(1)">Add a year</button>
+        <button @click="subtract(1)">Subtract a year</button>
+        <button @dblclick="add(10)">Add 10 year</button>
+        <button @dblclick="subtract(10)">Subtract 10 year</button>
+        <p>My age is {{ age }}</p>
+        <div id="canvas" @mousemove="updateXY"></div>
+
+        <h1>Event Modifiers</h1>
+        <button @click.once="add(1)">Add a year Once</button>
+        <a href="https://w3resource.com/" @click.prevent="click">click me</a>
+        <!-- the click event's propagation will be stopped -->
+        <a @click.stop="doThis">sdsd</a>
+        <!-- the submit event will no longer reload the page -->
+        <form @submit.prevent="onSubmit">
+            <button type="submit">Submit</button>
+        </form>
+
+
+        <h1>Keyboard Events</h1>
+        <input type="text" @keyup.enter="keyEvents('enter key pressed')" />
+        <input type="text" @keyup.alt.enter="keyEvents('alt+enter key pressed')" />
+        <input type="text" @keyup.page-down="keyEvents('page-down key pressed')" />
+        <input type="text" @keyup.tab="keyEvents('tab key pressed')" />
+        <input type="text" @keyup.delete="keyEvents('delete key pressed')" />
+        <input type="text" @keyup.esc="keyEvents('esc key pressed')" />
+        <input type="text" @keyup.space="keyEvents('space key pressed')" />
+        <input type="text" @keyup.up="keyEvents('up key pressed')" />
+        <input type="text" @keyup.down="keyEvents('down key pressed')" />
+        <input type="text" @keyup.left="keyEvents('left key pressed')" />
+        <input type="text" @keyup.right="keyEvents('right key pressed')" />
+        <input type="text" @keyup.ctrl="keyEvents('ctrl key pressed')" />
+        <!-- Alt + C -->
+        <input v-on:keyup.alt.67="keyEvents('clear')">
+        <!-- Ctrl + Click -->
+        <div v-on:click.ctrl="keyEvents('ctrl')">Do something</div>
+        <!-- this will fire even if Alt or Shift is also pressed -->
+        <button v-on:click.ctrl="keyEvents('click.ctrl')">A</button>
+        <!-- this will only fire when Ctrl and no other keys are pressed -->
+        <button v-on:click.ctrl.exact="keyEvents('click.ctrl.exact')">A</button>
+        <!-- this will only fire when no system modifiers are pressed -->
+        <button v-on:click.exact="keyEvents('click.exact')">A</button>
+
+        <h1>Mouse Button Modifiers</h1>
+        <button v-on:click.left="keyEvents('click.left')">A</button>
+        <button v-on:click.right="keyEvents('click.right')">A</button>
+        <button v-on:click.middle="keyEvents('click.middle')">A</button>
+
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
